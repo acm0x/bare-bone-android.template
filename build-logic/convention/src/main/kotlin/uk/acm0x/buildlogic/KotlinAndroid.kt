@@ -1,4 +1,4 @@
-package uk.acm0x.template
+package uk.acm0x.buildlogic
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
@@ -21,11 +21,14 @@ internal fun Project.configureKotlinAndroid(
 
         defaultConfig {
             minSdk = AppDefaults.minSdk
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            testInstrumentationRunnerArguments["runnerBuilder"] =
+                "de.mannodermaus.junit5.AndroidJUnit5Builder"
         }
 
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
             isCoreLibraryDesugaringEnabled = true
         }
 
@@ -45,9 +48,23 @@ internal fun Project.configureKotlinAndroid(
                 "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
             )
 
-            // Set JVM target to 1.8
-            jvmTarget = JavaVersion.VERSION_1_8.toString()
+            jvmTarget = JavaVersion.VERSION_11.toString()
         }
+
+        testOptions {
+            animationsDisabled = true
+            unitTests {
+                isReturnDefaultValues = true
+                isIncludeAndroidResources = true
+            }
+
+            packagingOptions {
+                jniLibs {
+                    useLegacyPackaging = true
+                }
+            }
+        }
+
     }
 
     val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")

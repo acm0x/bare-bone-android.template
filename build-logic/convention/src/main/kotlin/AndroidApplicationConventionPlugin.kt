@@ -18,8 +18,8 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import uk.acm0x.template.AppDefaults
-import uk.acm0x.template.configureKotlinAndroid
+import uk.acm0x.buildlogic.AppDefaults
+import uk.acm0x.buildlogic.configureKotlinAndroid
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -27,6 +27,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
+                apply("androidx.navigation.safeargs.kotlin")
             }
 
             extensions.configure<BaseAppModuleExtension> {

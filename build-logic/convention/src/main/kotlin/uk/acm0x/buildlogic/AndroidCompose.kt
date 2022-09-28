@@ -1,4 +1,4 @@
-package uk.acm0x.template
+package uk.acm0x.buildlogic
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project

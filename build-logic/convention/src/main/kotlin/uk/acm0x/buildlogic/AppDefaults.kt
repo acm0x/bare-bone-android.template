@@ -1,4 +1,4 @@
-package uk.acm0x.template;
+package uk.acm0x.buildlogic
 
 object AppDefaults {
   const val minSdk = 31

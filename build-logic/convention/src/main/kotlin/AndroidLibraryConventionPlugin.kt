@@ -5,8 +5,8 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import uk.acm0x.template.AppDefaults
-import uk.acm0x.template.configureKotlinAndroid
+import uk.acm0x.buildlogic.AppDefaults
+import uk.acm0x.buildlogic.configureKotlinAndroid
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
