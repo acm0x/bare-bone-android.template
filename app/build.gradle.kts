@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.window.manager)
     implementation(libs.androidx.profileinstaller)
     implementation(libs.androidx.material)
+    implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)
@@ -70,6 +71,8 @@ dependencies {
     kapt(libs.hilt.compiler)
     kaptAndroidTest(libs.hilt.compiler)
     testImplementation(libs.junit4)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kluent)
 
     // androidx.test is forcing JUnit, 4.12. This forces it to use 4.13
     configurations.configureEach {
